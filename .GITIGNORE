@@ -1,4 +1,5 @@
 .idea/*
+.idea/workspace.xml
 .GITIGNORE
 package-lock.json
 node_modules/*

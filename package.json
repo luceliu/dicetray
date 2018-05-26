@@ -1,0 +1,25 @@
+{
+  "name": "dicetray",
+  "version": "1.0.0",
+  "description": "Made by Luck",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luceliu/dicetray.git"
+  },
+  "author": "Sam Wu & Luce Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luceliu/dicetray/issues"
+  },
+  "homepage": "https://github.com/luceliu/dicetray#readme"
+}
