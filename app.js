@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/dicetray', (err) => {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.set("view engine", "ejs");
+app.use(express.static('public'));
 
 app.get("/", function(req, res){
     res.render("landing");
@@ -70,6 +71,10 @@ app.get('/character/id/:id/edit', function (req, res) {
             res.render("editcharacter", {character:character});
         }
     })
+});
+
+app.get("/dice", function(req, res){
+    res.render("dice");
 });
 
 app.post("/characters", function(req, res){

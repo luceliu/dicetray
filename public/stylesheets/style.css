@@ -1,0 +1,13 @@
+p {
+    color: blue;
+    /*border: 2px solid red;*/
+}
+
+.num-rolls {
+    display: inline-block;
+    width: 35px;
+}
+
+.btn-roll-dice {
+
+}
