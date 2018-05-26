@@ -73,4 +73,13 @@
   }
 
   // Your custom JavaScript goes here
+    function Character(name, attributes, hit_points, inventory, traits) {
+        this.name = name;
+        this.attributes = attributes;
+        this.hit_points = hit_points;
+        this.inventory = inventory;
+        this.traits = traits;
+    }
+
 })();
+
