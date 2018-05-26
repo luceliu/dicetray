@@ -11,12 +11,12 @@
     </header>
 
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% characters.forEach(function(characters){ %>
+        <% characters.forEach(function(character){ %>
         <div class="col-md-3 col-sm-6">
             <div class="thumbnail">
                 <div class="caption">
-                    <h1>this is ya character ya doof</h1>
-                    <h4><%= characters.strength %></h4>
+                    <p>Character: <%= character._id %></p>
+                    <p><%= character %></p>
                 </div>
             </div>
         </div>
