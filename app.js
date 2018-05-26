@@ -17,6 +17,10 @@ var characters = [
     {name: "Mountain Goat's Rest", image: "https://farm7.staticflickr.com/6057/6234565071_4d20668bbd.jpg"}
 ];
 
+var characters = [
+    {strength: 12, dexterity: 15, constitution:10, intelligence: 9, wisdom: 16, charisma: 18}
+];
+
 app.get("/", function(req, res){
     res.send("yoooo");
 });
@@ -27,11 +31,22 @@ app.get("/characters", function(req, res){
 
 app.post("/characters", function(req, res){
     // get data from form and add to campgrounds array
-    var name = req.body.name;
-    var image = req.body.image;
-    var newCharacter = {name: name, image: image}
+    let attributes = new Attributes(
+        req.body.strength,
+        req.body.dexterity,
+        req.body.constitution,
+        req.body.intelligence,
+        req.body.wisdom,
+        req.body.charisma
+    );
+    let newCharacter = new Character(attributes);
+    newCharacter.save(function (err) {
+        if (err) {
+            console.log(err + "fuck");
+        }
+    });
     characters.push(newCharacter);
-    //redirect back to campgrounds page
+    //redirect back to characters page
     res.redirect("/characters");
 });
 
@@ -42,3 +57,18 @@ app.get("/characters/new", function(req, res){
 app.listen(3000, function(){
     console.log("The Dicetray Server Has Started!");
 });
+
+function Attributes(strength, dexterity, constitution, intelligence, wisdom, charisma)
+{
+    this.strength = strength;
+    this.dexterity = dexterity;
+    this.constitution = constitution;
+    this.intelligence = intelligence;
+    this.wisdom = wisdom;
+    this.charisma = charisma;
+}
+
+function Character(attributes)
+{
+    this.attributes = attributes;
+}
