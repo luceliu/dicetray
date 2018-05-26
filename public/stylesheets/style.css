@@ -5,9 +5,24 @@ p {
 
 .num-rolls {
     display: inline-block;
-    width: 35px;
+    width: 45px;
+}
+
+.increment, .decrement {
+    background-color: #E5E5DA;
+    border: none;
+    color: black;
 }
 
 .btn-roll-dice {
+    background-color: #BC3B36;
+    color: white;
+}
 
+input {
+    text-align: center;
+}
+
+#roll-history {
+    background-color: white;
 }
