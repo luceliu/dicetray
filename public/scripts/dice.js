@@ -59,6 +59,8 @@ function rollDice(d, times) {
 function getRandomNumberUpTo(number) {
     return Math.floor((Math.random() * number) + 1);
 }
+
+// thanks https://gist.github.com/hurjas/2660489
 function timeStamp() {
 // Create a date object with the current time
     var now = new Date();

@@ -3,6 +3,13 @@ p {
     /*border: 2px solid red;*/
 }
 
+h3 {
+    text-align: center;
+}
+
+.die {
+    padding: 5px 50px;
+}
 .num-rolls {
     display: inline-block;
     width: 45px;
@@ -12,6 +19,20 @@ p {
     background-color: #E5E5DA;
     border: none;
     color: black;
+    outline: none;
+}
+
+.increment:hover, .decrement:hover {
+    background-color: #d1d1b5;
+}
+
+.increment:focus, .decrement:focus {
+    outline: 0;
+}
+
+.increment:active, .decrement:active {
+    outline: none;
+    background-color: #d1d1b5;
 }
 
 .btn-roll-dice {
