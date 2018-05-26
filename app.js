@@ -1,8 +1,8 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require('mongoose');
-var methodOverride = require('method-override');
+let express = require("express"),
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require('mongoose'),
+    methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost/dicetray', (err) => {
     if (err) {
@@ -14,7 +14,7 @@ app.use(methodOverride('_method'));
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
-    res.send("yoooo");
+    res.render("landing");
 });
 
 app.get("/characters", function(req, res){
@@ -77,6 +77,7 @@ app.post("/characters", function(req, res){
     console.log(req.body);
     Character.create({
         _id: new mongoose.Types.ObjectId(),
+        name:req.body.name,
         strength: req.body.strength,
         dexterity: req.body.dexterity,
         constitution: req.body.constitution,
@@ -117,6 +118,7 @@ let Schema = mongoose.Schema;
 
 let CharacterSchema = new Schema({
     _id:Schema.Types.ObjectId,
+    name:String,
     strength:Number,
     dexterity:Number,
     constitution:Number,
@@ -126,3 +128,111 @@ let CharacterSchema = new Schema({
 });
 
 let Character = mongoose.model("Character", CharacterSchema);
+
+//Character functions
+function getModifiers(character)
+{
+    let modifiers = [
+        strength => null,
+        dexterity => null,
+        constitution => null,
+        intelligence => null,
+        wisdom => null,
+        charisma => null,
+    ];
+    if (character instanceof Character) {
+        let i = 0;
+        getAttributes(character).forEach((attribute) => {
+            modifiers[i] = calculateModifier(attribute);
+            i++;
+        })
+    } else {
+        return null;
+        //TODO throw dat red hot exception
+    }
+}
+
+function getAttributes(character)
+{
+    let attributes = [];
+    attributes.push(character.strength);
+    attributes.push(character.dexterity);
+    attributes.push(character.constitution);
+    attributes.push(character.intelligence);
+    attributes.push(character.wisdom);
+    attributes.push(character.charisma);
+
+    return attributes;
+}
+
+/**
+ * @param attribute
+ * @returns {number}
+ */
+function calculateModifier(attribute)
+{
+    switch (attribute) {
+        case 1:
+            return -5;
+            break;
+        case 2:
+        case 3:
+            return -4;
+            break;
+        case 4:
+        case 5:
+            return -3;
+            break;
+        case 6:
+        case 7:
+            return -2;
+            break;
+        case 8:
+        case 9:
+            return -1;
+            break;
+        case 10:
+        case 11:
+            return 0;
+            break;
+        case 12:
+        case 13:
+            return 1;
+            break;
+        case 14:
+        case 15:
+            return 2;
+            break;
+        case 16:
+        case 17:
+            return 3;
+            break;
+        case 18:
+        case 19:
+            return 4;
+            break;
+        case 20:
+        case 21:
+            return 5;
+            break;
+        case 22:
+        case 23:
+            return 6;
+            break;
+        case 24:
+        case 25:
+            return 7;
+            break;
+        case 26:
+        case 27:
+            return 8;
+            break;
+        case 28:
+        case 29:
+            return 9;
+            break;
+        case 30:
+            return 10;
+            break;
+    }
+}

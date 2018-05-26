@@ -1,9 +1,10 @@
 <% include partials/header %>
+
 <div class="container">
+    <% character.forEach(function(char){ %>
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% character.forEach(function(char){ %>
         <p align="left">
-            Character: <%= char._id %>
+            Character: <%= char.name %>
             <br>
             Strength: <%= char.strength %>
             <br>
@@ -17,17 +18,16 @@
             <br>
             Charisma: <%= char.charisma %>
         </p>
-
-        <p>
-            <a class="btn btn-primary btn-large" href="/character/id/<%= char._id %>/edit">Edit that man</a>
-        </p>
-
-        <form action="/character/id/<%=char._id%>?_method=DELETE" method="POST">
-            <button> Delete that man </button>
-        </form>
-
-        <% }); %>
     </div>
+
+    <p>
+        <a class="btn btn-primary btn-large" href="/character/id/<%= char._id %>/edit">Edit that man</a>
+    </p>
+
+    <form action="/character/id/<%=char._id%>?_method=DELETE" method="POST">
+        <button class="btn btn-primary btn-large"> Delete that man </button>
+    </form>
+    <% }); %>
 </div>
 
 <% include partials/footer %>
