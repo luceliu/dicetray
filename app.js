@@ -25,6 +25,18 @@ app.get("/characters", function(req, res){
     });
 });
 
+app.get('/characters/:id', function (req, res) {
+    console.log('_id: ' + req.params.id);
+    Character.find({_id: req.params.id}, (err, character) => {
+        if (err) {
+            console.log(err);
+            res.send("Unknown character: " + req.params.id);
+        } else {
+            res.send(character);
+        }
+    })
+});
+
 app.post("/characters", function(req, res){
     // get data from form and add
     console.log(req.body);
@@ -44,35 +56,17 @@ app.post("/characters", function(req, res){
         }
         res.redirect("/characters");
     });
+});
 
-    // Attributes.create({
-    //     strength: req.body.strength,
-    //     dexterity: req.body.dexterity,
-    //     constitution: req.body.constitution,
-    //     intelligence: req.body.intelligence,
-    //     wisdom: req.body.wisdom,
-    //     charisma: req.body.charisma
-    // }, (err, attribute) => {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log("Success");
-    //         console.log(attribute);
-    //
-    //         Character.create({
-    //             _id: new mongoose.Types.ObjectId(),
-    //             attributes: attribute
-    //         }, (err, character) => {
-    //             if (err) {
-    //                 console.log(err);
-    //             } else {
-    //                 console.log("Success");
-    //                 console.log(character);
-    //                 res.redirect("/characters");
-    //             }
-    //         })
-    //     }
-    // });
+app.delete('/characters', function (req, res) {
+    Character.deleteOne({_id: req.body._id}, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("success");
+            res.redirect("/characters");
+        }
+    });
 });
 
 app.get("/characters/new", function(req, res){
@@ -85,17 +79,6 @@ app.listen(3000, function(){
 
 //Schemas
 let Schema = mongoose.Schema;
-
-// let AttributesSchema = new Schema({
-//     strength:Number,
-//     dexterity:Number,
-//     constitution:Number,
-//     intelligence:Number,
-//     wisdom:Number,
-//     charisma:Number,
-// });
-//
-// let Attributes = mongoose.model("Attributes", AttributesSchema);
 
 let CharacterSchema = new Schema({
     _id:Schema.Types.ObjectId,
