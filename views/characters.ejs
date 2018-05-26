@@ -2,21 +2,23 @@
 <div class="container">
     <header class="jumbotron">
         <div class="container">
-            <h1>Welcome To dicetray!</h1>
-            <p>dic up ya trays</p>
+            <h1>Mans</h1>
+            <p>Whoms Mans Are These</p>
             <p>
-                <a class="btn btn-primary btn-large" href="/characters/new">Add new character</a>
+                <a class="btn btn-primary btn-large" href="/characters/new">Get a New Man</a>
             </p>
         </div>
     </header>
 
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% characters.forEach(function(characters){ %>
+        <% characters.forEach(function(character){ %>
         <div class="col-md-3 col-sm-6">
             <div class="thumbnail">
                 <div class="caption">
-                    <h1>this is ya character ya doof</h1>
-                    <h4><%= characters.strength %></h4>
+                    <p>Character: <%= character.name %></p>
+                    <p>
+                        <a class="btn btn-primary btn-large" href="/character/id/<%= character._id %>">Tell me more</a>
+                    </p>
                 </div>
             </div>
         </div>

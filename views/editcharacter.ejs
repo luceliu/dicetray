@@ -1,0 +1,40 @@
+<% include partials/header %>
+<div class="container">
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% character.forEach(function(char){ %>
+        <form action="/character/id/<%=char._id%>?_method=PUT" method="POST">
+            <div class="form-group">
+                <p>Name:
+                    <input class="field" type="text" name="character[name]" placeholder="name" value="<%=char.name%>">
+                </p>
+                <p>Strength:
+                    <input class="field" type="text" name="character[strength]" placeholder="strength" value="<%=char.strength%>">
+                </p>
+                <p>Dexterity:
+                    <input class="field" type="text" name="character[dexterity]" placeholder="dexterity" value="<%=char.dexterity%>">
+                </p>
+                <p>Constitution
+                    <input class="field" type="text" name="character[constitution]" placeholder="constitution" value="<%=char.constitution%>">
+                </p>
+                <p>Intelligence
+                    <input class="field" type="text" name="character[intelligence]" placeholder="intelligence" value="<%=char.intelligence%>">
+                </p>
+                <p>Wisdom
+                    <input class="field" type="text" name="character[wisdom]" placeholder="wisdom" value="<%=char.wisdom%>">
+                </p>
+                <p>Charisma
+                    <input class="field" type="text" name="character[charisma]" placeholder="charisma" value="<%=char.charisma%>">
+                </p>
+            </div>
+            <!--<div class="form-group">-->
+            <!--<input class="form-control" type="text" name="image" placeholder="image url">-->
+            <!--</div>-->
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Edit that man</button>
+            </div>
+        </form>
+        <% }); %>
+    </div>
+</div>
+
+<% include partials/footer %>
