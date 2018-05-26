@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost/dicetray', (err) => {
     if (err) {
@@ -9,6 +10,7 @@ mongoose.connect('mongodb://localhost/dicetray', (err) => {
     }
 });
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
@@ -25,14 +27,47 @@ app.get("/characters", function(req, res){
     });
 });
 
-app.get('/characters/:id', function (req, res) {
+app.get('/character/id/:id', function (req, res) {
     console.log('_id: ' + req.params.id);
     Character.find({_id: req.params.id}, (err, character) => {
         if (err) {
             console.log(err);
             res.send("Unknown character: " + req.params.id);
+            res.redirect("/characters");
         } else {
-            res.send(character);
+            // res.send(character);
+            console.log("Found character: " + req.params.id);
+            console.log(character);
+            res.render("character", {character:character});
+        }
+    })
+});
+
+app.put('/character/id/:id', (req, res) => {
+    Character.findByIdAndUpdate(req.params.id, req.body.character, (err, updated) => {
+        if (err) {
+            console.log(err);
+            res.redirect("/characters");
+        } else {
+            console.log("updated");
+            console.log(updated);
+            res.redirect("/character/id/"+req.params.id);
+        }
+    });
+});
+
+app.get('/character/id/:id/edit', function (req, res) {
+    console.log("Editing: " + req.params.id);
+    Character.find({_id: req.params.id}, (err, character) => {
+        if (err) {
+            console.log(err);
+            res.send("Unknown character: " + req.params.id);
+            res.redirect("/characters");
+        } else {
+            // res.send(character);
+            console.log("Found character: " + req.params.id);
+            console.log(character);
+            res.render("editcharacter", {character:character});
         }
     })
 });
@@ -58,8 +93,8 @@ app.post("/characters", function(req, res){
     });
 });
 
-app.delete('/characters', function (req, res) {
-    Character.deleteOne({_id: req.body._id}, (err) => {
+app.delete('/character/id/:id', function (req, res) {
+    Character.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             console.log(err);
         } else {
