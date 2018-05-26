@@ -4,17 +4,22 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.use(express.static('public'));
 
 let characters = [
     {strength: 12, dexterity: 15, constitution:10, intelligence: 9, wisdom: 16, charisma: 18}
 ];
 
 app.get("/", function(req, res){
-    res.send("yoooo");
+    res.render("landing");
 });
 
 app.get("/characters", function(req, res){
     res.render("characters",{characters:characters});
+});
+
+app.get("/dice", function(req, res){
+    res.render("dice");
 });
 
 app.post("/characters", function(req, res){
