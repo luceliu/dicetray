@@ -1,3 +1,12 @@
+#nav-bar-dd {
+    background-color: #E5E5DA;
+}
+
+#container-landing {
+    margin: 15px 50px;
+    text-align: center;
+}
+
 p {
     color: blue;
     /*border: 2px solid red;*/
