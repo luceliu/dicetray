@@ -1,8 +1,28 @@
+#nav-bar-dd {
+    background-color: #E5E5DA;
+}
+
+#container {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#dice-container {
+    margin-top: 20px;
+}
+
 p {
     color: blue;
     /*border: 2px solid red;*/
 }
 
+h3 {
+    text-align: center;
+}
+
+.die {
+    padding: 5px 50px;
+}
 .num-rolls {
     display: inline-block;
     width: 45px;
@@ -12,6 +32,21 @@ p {
     background-color: #E5E5DA;
     border: none;
     color: black;
+    outline: none;
+}
+
+#dice-container .increment:hover, .decrement:hover {
+    background-color: #d1d1b5;
+}
+
+#dice-container .increment:focus, .decrement:focus, #history__clear-btn{
+    outline: 0;
+    box-shadow: none;
+}
+
+#dice-container .increment:active, .decrement:active {
+    outline: none;
+    background-color: #d1d1b5;
 }
 
 .btn-roll-dice {
@@ -25,4 +60,8 @@ input {
 
 #roll-history {
     background-color: white;
+}
+
+#history__clear-btn {
+    color: red;
 }
