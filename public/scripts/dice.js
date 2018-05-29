@@ -33,6 +33,12 @@ $(document).ready(function() {
         $(this).siblings('input').val(currVal);
     });
 
+    $("#history__clear-btn").click(function () {
+       // clear
+        console.log($("#roll-history"));
+        $("#roll-history")[0].textContent = '';
+    });
+
 });
 
 function rollDice(d, times) {

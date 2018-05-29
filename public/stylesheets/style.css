@@ -39,7 +39,7 @@ h3 {
     background-color: #d1d1b5;
 }
 
-#dice-container .increment:focus, .decrement:focus {
+#dice-container .increment:focus, .decrement:focus, #history__clear-btn{
     outline: 0;
     box-shadow: none;
 }
@@ -60,4 +60,8 @@ input {
 
 #roll-history {
     background-color: white;
+}
+
+#history__clear-btn {
+    color: red;
 }
