@@ -1,11 +1,14 @@
 <% include partials/header %>
-<div class="container">
+<div class="container" id="container">
     <div class="row">
     <div class="col-4"><h3>Roll Some Dice</h3>
+        <div id="dice-container">
         <div class="die" id="d20">
         <button type="button" class="btn btn-primary decrement">-</button>
         <input class="form-control num-rolls" type="text" placeholder="1">
         <button type="button" class="btn btn-primary increment">+</button>
+
+
             <span>d20</span>
             <button type="button" class="btn btn-roll-dice" style="float: right;">Roll</button>
         </div>
@@ -49,7 +52,7 @@
             <span>d4</span>
             <button type="button" class="btn btn-roll-dice" style="float: right;">Roll</button>
         </div>
-    </div>
+        </div></div>
         <div class="col-2"></div>
     <div class="col-6"><h3>Roll History</h3>
         <textarea readonly class="form-control" id="roll-history" rows="18"></textarea>

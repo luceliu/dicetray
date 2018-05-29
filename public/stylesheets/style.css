@@ -2,9 +2,13 @@
     background-color: #E5E5DA;
 }
 
-#container-landing {
-    margin: 15px 50px;
+#container {
+    margin: 20px auto;
     text-align: center;
+}
+
+#dice-container {
+    margin-top: 20px;
 }
 
 p {
@@ -31,15 +35,16 @@ h3 {
     outline: none;
 }
 
-.increment:hover, .decrement:hover {
+#dice-container .increment:hover, .decrement:hover {
     background-color: #d1d1b5;
 }
 
-.increment:focus, .decrement:focus {
+#dice-container .increment:focus, .decrement:focus {
     outline: 0;
+    box-shadow: none;
 }
 
-.increment:active, .decrement:active {
+#dice-container .increment:active, .decrement:active {
     outline: none;
     background-color: #d1d1b5;
 }
