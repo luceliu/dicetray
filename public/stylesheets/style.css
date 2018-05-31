@@ -81,6 +81,9 @@ input {
 #start-screen__characters {
     background-image: url("http://cdn4.sportngin.com/attachments/photo/1733/2259/Dragons-of-Massive-Geek-dungeons-and-dragons-1004082_771_762.jpeg");
     filter: grayscale(100%);
+    position: relative;
+    justify-content: center;
+    display: flex;
 }
 
 #start-screen__characters:hover, #start-screen__dice:hover {
@@ -90,4 +93,23 @@ input {
 #start-screen__dice {
     background-image: url("https://i0.wp.com/www.acrosstheboardgames.net/wp-content/uploads/IMG_34393.jpg?w=900");
     filter: grayscale(100%);
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+#start-screen__characters-link, #start-screen__dice-link {
+    position: absolute;
+    bottom: 20px;
+}
+
+#start-screen__characters-link a, #start-screen__dice-link a {
+    color: white;
+    font-size: 2rem;
+}
+
+#start-screen__characters-link a:hover, #start-screen__dice-link a:hover {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
 }
