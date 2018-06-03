@@ -118,3 +118,7 @@ input {
     font-size: 2rem;
     text-decoration: none;
 }
+
+.players__btn {
+    border: 1px solid blue;
+}

@@ -1,5 +1,9 @@
 // alert('dice connected');
 $(document).ready(function() {
+    let players = []; // array of player objects
+    let activePlayer; // whoever's rolling at the time
+
+    /* BUTTONS */
     $(".btn-roll-dice").click(function () {
         let roll = $(this).parent()[0].id.substring(1);
         roll = Number(roll);
@@ -29,14 +33,35 @@ $(document).ready(function() {
         $(this).siblings('input').val(currVal);
     });
 
+    $(".players__btn").click(function () {
+        console.log('click'); // todo what's up with this not firing
+    });
+
     $("#history__clear-btn").click(function () {
        // clear
         console.log($("#roll-history"));
         $("#roll-history")[0].textContent = '';
     });
 
+    $("#players__new-btn").click(function () {
+        if (canAddMorePlayers(players.length)) {
+            console.log("Players[]: " + players);
+            let playerIndex = players.length+1;
+            let newPlayer = {
+                playerId: playerIndex,
+                playerName: "Player "+playerIndex,
+                // TODO: add colours
+            };
+            players.push(newPlayer);
+            console.log("Players[]: " + players);
+            $("#players").append("<button type='button' class='btn players__btn'>"+newPlayer.playerName+"</button>");
+        }
+
+    });
+
 });
 
+/* FUNCTIONS */
 function rollDice(d, times) {
     let i;
     let results = [];
@@ -57,6 +82,10 @@ function rollDice(d, times) {
 
 function getRandomNumberUpTo(number) {
     return Math.floor((Math.random() * number) + 1);
+}
+
+function canAddMorePlayers(currentNum) {
+    return currentNum < 8;
 }
 // ----------------------------------------------------------------------------------------------
 // thanks https://gist.github.com/hurjas/2660489
