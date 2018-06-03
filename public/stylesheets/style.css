@@ -12,11 +12,6 @@
     margin-top: 20px;
 }
 
-p {
-    color: blue;
-    /*border: 2px solid red;*/
-}
-
 h3 {
     text-align: center;
 }
@@ -29,24 +24,24 @@ h3 {
     width: 45px;
 }
 
-.increment, .decrement {
+.increment, .decrement, #players__new-btn {
     background-color: #E5E5DA;
     border: none;
     color: black;
     outline: none;
 }
 
-#dice-container .increment:hover, .decrement:hover {
+#dice-container .increment:hover, .decrement:hover, #players__new-btn:hover {
     background-color: #d1d1b5;
 }
 
-#dice-container .increment:focus, .decrement:focus, #history__clear-btn{
+#dice-container .increment:focus, .decrement:focus, #history__clear-btn, #players__new-btn:focus {
     outline: 0;
     box-shadow: none;
 }
 
-#dice-container .increment:active, .decrement:active {
-    outline: none;
+#dice-container .increment:active, .decrement:active, #players__new-btn:active {
+    outline: 0;
     background-color: #d1d1b5;
 }
 
@@ -61,6 +56,13 @@ input {
 
 #roll-history {
     background-color: white;
+}
+#roll-history:focus {
+    box-shadow: none;
+    border: 1px solid #ced4da;
+}
+#roll-history:active {
+    border: 1px solid #ced4da;
 }
 
 #history__clear-btn {

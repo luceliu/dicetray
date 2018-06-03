@@ -4,22 +4,18 @@ $(document).ready(function() {
         let roll = $(this).parent()[0].id.substring(1);
         roll = Number(roll);
         console.log("Date: "+ Date.now());
-        // console.log("Rolling a d"+roll);
         let numTimes = $(this).siblings('input').val();
         console.log("numTimes: "+numTimes);
         if (numTimes==="") {
-            // console.log("it's a blank");
             rollDice(roll, 1);
         }
         else {
             rollDice(roll, Number(numTimes));
         }
         $(this).siblings('input').val(1);
-        // console.log("Rolled a " + getRandomNumberUpTo(roll));
     });
 
     $(".decrement").click(function () {
-        // console.log($(this).siblings('input').val());
         let currVal = $(this).siblings('input').val()
         if (currVal > 1) {
             currVal--;
@@ -45,11 +41,8 @@ function rollDice(d, times) {
     let i;
     let results = [];
     for (i=0; i < times; i++) {
-        // console.log(getRandomNumberUpTo(d));
         results.push(getRandomNumberUpTo(d));
-        // $("#roll-history").append(getRandomNumberUpTo(d) +'\n');
     }
-    // console.log('times: '+times);
     $("#roll-history").append("["+timeStamp()+"] Rolled a d" + d +" and got: ");
     for (i = 0; i < results.length; i++) {
         if (i === results.length-1) {
@@ -65,7 +58,7 @@ function rollDice(d, times) {
 function getRandomNumberUpTo(number) {
     return Math.floor((Math.random() * number) + 1);
 }
-
+// ----------------------------------------------------------------------------------------------
 // thanks https://gist.github.com/hurjas/2660489
 function timeStamp() {
 // Create a date object with the current time
